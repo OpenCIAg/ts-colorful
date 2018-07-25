@@ -1,0 +1,6 @@
+.*
+!.nycr
+!.gitignore
+/coverage
+/node_modules
+/dist

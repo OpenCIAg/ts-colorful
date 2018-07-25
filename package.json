@@ -1,0 +1,36 @@
+{
+  "name": "colorful",
+  "version": "0.0.1",
+  "description": "Color Generator",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "**/*.ts"
+  ],
+  "standard": {
+    "ignore": [
+      "coverage/**",
+      "node_modules/**",
+      "src/**"
+    ]
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "nyc mocha test/**/*.spec.ts"
+  },
+  "author": "Etto",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "chai-string": "^1.4.0",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "string.prototype.padstart": "^3.0.0"
+  }
+}
