@@ -1,5 +1,5 @@
 {
-  "name": "colorful",
+  "name": "ciag-colorful",
   "version": "0.0.1",
   "description": "Color Generator",
   "main": "dist/lib/index.js",
