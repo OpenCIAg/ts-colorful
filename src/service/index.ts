@@ -1,5 +1,5 @@
-import { Color } from './color';
-import { ColorGenerator } from './generator';
+import { Color } from '../color';
+import { ColorGenerator } from '../generator';
 
 export class ColorService {
 

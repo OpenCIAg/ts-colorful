@@ -1,8 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "declarationDir": "dist/types",
-    "outDir": "dist/lib",
+    "declarationDir": "dist/",
+    "outDir": "dist/",
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "declaration": true,

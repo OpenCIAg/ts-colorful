@@ -1,5 +1,5 @@
-import { Color } from './color';
-import { HSVColor } from './hsv-color';
+import { Color } from '../color';
+import { HSVColor } from '../color';
 
 export interface Generator<T> {
     next(): T;
