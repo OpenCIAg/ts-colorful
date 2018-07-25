@@ -2,6 +2,20 @@ import * as padStart from 'string.prototype.padstart';
 
 padStart.shim();
 
+export interface RGBA {
+    red?: number;
+    green?: number;
+    blue?: number;
+    alpha?: number;
+}
+
+export interface HSVA {
+    hue?: number;
+    saturation?: number;
+    value?: number;
+    alpha?: number;
+}
+
 export interface Color {
 
     toRgb(): [number, number, number];
@@ -16,15 +30,15 @@ export interface Color {
 
     toRgbaFunc(): string;
 
-    replaceRgba({ red, green, blue, alpha }): Color;
+    replaceRgba(rgba: RGBA): Color;
 
-    replaceHsv({ gue, saturation, value, alpha }): Color;
+    replaceHsv(hsva: HSVA): Color;
 
     replaceAlpha(alpha: number);
 
-    addRgba({ red, green, blue, alpha }): Color;
+    addRgba(rgba: RGBA): Color;
 
-    addHsv({ hue, saturation, value }): Color;
+    addHsv(hsva: HSVA): Color;
 
     addAlpha(alpha: number);
 
@@ -39,15 +53,15 @@ export abstract class BaseColor implements Color {
 
     abstract toHsv(): [number, number, number];
 
-    abstract replaceRgba({ red, green, blue, alpha }): Color;
+    abstract replaceRgba(rgba: RGBA): Color;
 
-    abstract replaceHsv({ gue, saturation, value, alpha }): Color;
+    abstract replaceHsv(hsva: HSVA): Color;
 
     abstract replaceAlpha(alpha: number);
 
-    abstract addRgba({ red, green, blue, alpha }): Color;
+    abstract addRgba(rgba: RGBA): Color;
 
-    abstract addHsv({ hue, saturation, value, alpha }): Color;
+    abstract addHsv(hsva: HSVA): Color;
 
     abstract addAlpha(alpha: number);
 
