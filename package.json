@@ -1,6 +1,6 @@
 {
   "name": "ciag-colorful",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Color Generator",
   "main": "index.js",
   "types": "index.d.ts",
@@ -18,8 +18,8 @@
     "build": "tsc",
     "postbuild" : "cp package.json dist/",
     "test": "nyc mocha --file test/setup.ts test/**/*.spec.ts",
-    "predeploy" : "npm run build && cd dist/",
-    "deploy":"npm publish"
+    "predeploy" : "npm run build",
+    "deploy":"cd dist/ && npm publish"
   },
   "author": "Etto",
   "license": "MIT",
