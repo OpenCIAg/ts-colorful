@@ -1,4 +1,4 @@
-import { Color, BaseColor, rgbToHsv, hsvToRgb } from './color';
+import { Color, BaseColor, rgbToHsv, hsvToRgb, RGBA, HSVA } from './color';
 
 export class HSVColor extends BaseColor {
     constructor(
@@ -10,8 +10,9 @@ export class HSVColor extends BaseColor {
         super();
     }
 
-    static fromArray([hue, saturation, value, alpha = 1]) {
-        return new HSVColor(hue, saturation, value, alpha);
+    static fromArray(hsva: Array<number>): HSVColor {
+        const [h, s, v, a = 1] = hsva;
+        return new HSVColor(h, s, v, a);
     }
 
     toRgb(): [number, number, number] {
@@ -19,7 +20,7 @@ export class HSVColor extends BaseColor {
     }
 
     toRgba(): [number, number, number, number] {
-        return [this.hue, this.saturation, this.value, this.alpha];
+        return hsvToRgb(this.hue, this.saturation, this.value).concat(this.alpha) as [number, number, number, number];
     }
 
     toHsv(): [number, number, number] {
@@ -42,9 +43,9 @@ export class HSVColor extends BaseColor {
         return new HSVColor(h, s, v, rgba.alpha);
     }
 
-    replaceRgba(channels: any): Color {
+    replaceRgba(channels: RGBA): Color {
         const [r, g, b, a] = this.toRgba();
-        const rgba = {
+        const rgba: RGBA = {
             red: r,
             green: g,
             blue: b,

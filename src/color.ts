@@ -1,6 +1,4 @@
-import * as padStart from 'string.prototype.padstart';
 
-padStart.shim();
 
 export interface RGBA {
     red?: number;

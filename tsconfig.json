@@ -15,8 +15,8 @@
     ],
     "lib": [
       "es2017",
-      "dom",
       "es2017.object",
+      "dom",
     ],
     "plugins": [
       { "name": "tslint-language-service"}
