@@ -32,3 +32,29 @@ export class RandomHSVColorGenerator implements ColorGenerator {
     }
 
 }
+
+export class PalleteBasedColorGenerator implements ColorGenerator {
+
+    protected counter = 0;
+
+    constructor(
+        protected colorPallete: Array<Color>,
+        protected delta = 0.02,
+    ) {
+
+    }
+
+    modifyColor(baseColor: Color, generation: number) {
+        const signal = (generation % 2) ? 1 : -1;
+        const delta = Math.ceil(generation / 2) * this.delta * signal;
+        return baseColor.addHsv({ value: delta });
+    }
+
+    next(): Color {
+        const generation = Math.trunc(this.counter / this.colorPallete.length);
+        const index = this.counter % this.colorPallete.length;
+        const baseColor = this.colorPallete[index];
+        this.counter += 1;
+        return this.modifyColor(baseColor, generation);
+    }
+}

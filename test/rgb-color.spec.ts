@@ -2,6 +2,8 @@ import { RGBAColor } from '../src/index';
 import { RGBA } from '../src/index';
 import { expect } from 'chai';
 
+const black = new RGBAColor(0, 0, 0);
+const white = new RGBAColor(1, 1, 1);
 
 
 describe('RGBAColor', () => {
@@ -39,11 +41,42 @@ describe('RGBAColor', () => {
     expect(hsvRed).to.deep.equal([0, 1, 1]);
   })
   it('addRgb', () => {
-    const black = new RGBAColor(0, 0, 0);
     const red: RGBA = { red: 1 };
     const green: RGBA = { green: 1 };
     const blue: RGBA = { blue: 1 };
     const white = black.addRgba(red).addRgba(green).addRgba(blue);
     expect(white.toRgb()).to.deep.equal([1, 1, 1]);
+  })
+  it('fromHexString parseBlack with 6 digits', () => {
+    const parsed = RGBAColor.fromHexString('#000000');
+    expect(parsed.toRgb()).to.deep.equal(black.toRgb());
+  })
+  it('fromHexString parseBlack with 8 digits', () => {
+    const parsed = RGBAColor.fromHexString('#000000FF');
+    expect(parsed.toRgba()).to.deep.equal(black.toRgba());
+  })
+  it('fromHexString parseBlack with 3 digits', () => {
+    const parsed = RGBAColor.fromHexString('#000');
+    expect(parsed.toRgb()).to.deep.equal(black.toRgb());
+  })
+  it('fromHexString parseBlack with 4 digits', () => {
+    const parsed = RGBAColor.fromHexString('#000F');
+    expect(parsed.toRgba()).to.deep.equal(black.toRgba());
+  })
+  it('fromHexString parseWhite with 6 digits', () => {
+    const parsed = RGBAColor.fromHexString('#FFFFFF');
+    expect(parsed.toRgb()).to.deep.equal(white.toRgb());
+  })
+  it('fromHexString parseWhite with 8 digits', () => {
+    const parsed = RGBAColor.fromHexString('#FFFFFFFF');
+    expect(parsed.toRgba()).to.deep.equal(white.toRgba());
+  })
+  it('fromHexString parseWhite with 3 digits', () => {
+    const parsed = RGBAColor.fromHexString('#FFF');
+    expect(parsed.toRgb()).to.deep.equal(white.toRgb());
+  })
+  it('fromHexString parseWhite with 4 digits', () => {
+    const parsed = RGBAColor.fromHexString('#FFFF');
+    expect(parsed.toRgba()).to.deep.equal(white.toRgba());
   })
 });

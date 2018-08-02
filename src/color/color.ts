@@ -41,6 +41,10 @@ export interface Color {
     addAlpha(alpha: number);
 
     clone(): Color;
+
+    rgbDiff(color: Color): RGBA;
+
+    rgbDistance(color: Color): number;
 }
 
 export abstract class BaseColor implements Color {
@@ -89,6 +93,23 @@ export abstract class BaseColor implements Color {
             .join(',');
         return `rgba(${values})`;
     }
+
+    rgbDiff(color: Color): RGBA {
+        const keys = ['red', 'green', 'blue'];
+        const rgb = this.toRgb();
+        return Array.from(color.toRgb().entries())
+            .map(([i, v]) => [i, rgb[i] - v])
+            .map(([i, v]) => [keys[i], v])
+            .reduce((a, [k, v]) => Object.assign(a, { [k]: v })) as RGBA
+    }
+
+    rgbDistance(color: Color): number {
+        const rgb = this.toRgb();
+        return Array.from(color.toRgb().entries())
+            .map(([i, v]) => Math.abs(rgb[i] - v))
+            .reduce((a, it) => a + it, 0);
+    }
+
 }
 
 
