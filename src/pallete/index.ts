@@ -24,7 +24,7 @@ export const NEBULAR_LIGHT = {
     danger: '#FF4C6A',
 }
 
-export const NUBULAR_CORPORATE = {
+export const NEBULAR_CORPORATE = {
     primary: '#73A1FF',
     warning: '#FFA36B',
     success: '#5DCFE3',
