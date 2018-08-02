@@ -1,11 +1,8 @@
 # OpenCIAg | ciag-colorful
 
 [![Build Status](https://travis-ci.org/OpenCIAg/colorful.svg?branch=master)](https://travis-ci.org/OpenCIAg/colorful)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/acab5c036cce9af7f29f/maintainability)](https://codeclimate.com/github/OpenCIAg/colorful/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/acab5c036cce9af7f29f/test_coverage)](https://codeclimate.com/github/OpenCIAg/colorful/test_coverage)
-
 [![npm version](https://badge.fury.io/js/ciag-colorful.svg)](https://badge.fury.io/js/ciag-colorful)
 
 ## Install
