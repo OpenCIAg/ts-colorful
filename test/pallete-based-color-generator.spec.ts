@@ -17,11 +17,11 @@ describe('PalleteBasedColorGenerator', () => {
         }
         for (let i = 0; i < pallete.length; i += 1) {
             const currentColor = colorGenerator.next();
-            expect(currentColor.rgbDistance(pallete[i]) < 0.05).to.be.true
+            expect(currentColor.rgbDistance(pallete[i]) < 0.05).to.be.true;
         }
         for (let i = 0; i < pallete.length; i += 1) {
             const currentColor = colorGenerator.next();
-            expect(currentColor.rgbDistance(pallete[i]) < 0.05).to.be.true
+            expect(currentColor.rgbDistance(pallete[i]) < 0.05).to.be.true;
         }
     })
 })

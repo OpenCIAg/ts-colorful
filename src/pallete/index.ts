@@ -19,7 +19,7 @@ export const NEBULAR_COSMIC = {
 export const NEBULAR_LIGHT = {
     primary: '#8A7FFF',
     warning: '#FFA100',
-    success: '#FFA100',
+    success: '#40DC7E',
     info: '#4CA6FF',
     danger: '#FF4C6A',
 }
@@ -29,7 +29,7 @@ export const NUBULAR_CORPORTE = {
     warning: '#FFA36B',
     success: '#5DCFE3',
     info: '#BA7FEC',
-    danger: '#BA7FEC',
+    danger: '#FF6B83',
 }
 
 export class PalleteFactory {

@@ -1,5 +1,4 @@
-import { Color, BaseColor, rgbToHsv, hsvToRgb, HSVA } from './color';
-
+import { Color, BaseColor, rgbToHsv, hsvToRgb, HSVA, normalize, RGBA } from './color';
 
 function* range(start: number = 0, end: number, it: number = null): IterableIterator<number> {
     let current = start;
@@ -65,19 +64,19 @@ export class RGBAColor extends BaseColor {
     }
 
 
-    addRgba(channels: any): Color {
+    addRgba(channels: RGBA): Color {
         const newColor: RGBAColor = this.clone();
         Object.entries(channels)
             .filter(([k, v]) => v !== undefined)
-            .forEach(([k, v]) => newColor[k] += v)
+            .forEach(([k, v]) => newColor[k] = normalize(newColor[k] + v))
         return newColor;
     }
 
-    replaceRgba(channels: any): Color {
+    replaceRgba(channels: RGBA): Color {
         const newColor: RGBAColor = this.clone();
         Object.entries(channels)
             .filter(([k, v]) => v !== undefined)
-            .forEach(([k, v]) => newColor[k] = v)
+            .forEach(([k, v]) => newColor[k] = normalize(v))
         return newColor;
     }
 
@@ -87,7 +86,7 @@ export class RGBAColor extends BaseColor {
         return newColor;
     }
 
-    addHsv(channels: any): Color {
+    addHsv(channels: HSVA): Color {
         const [hue, saturation, value] = this.toHsv();
         const hsv: HSVA = {
             hue: hue,
@@ -97,12 +96,12 @@ export class RGBAColor extends BaseColor {
         Object.entries(channels)
             .filter(([k, v]) => v !== undefined)
             .forEach(([k, v]) => hsv[k] += (v as number))
-        const [red, green, blue] = hsvToRgb(hsv.hue, hsv.saturation, hsv.value);
+        const [red, green, blue] = hsvToRgb(hsv.hue, hsv.saturation, hsv.value).map((it) => normalize(it));
         return RGBAColor.fromArray([red, green, blue, this.alpha]);
     }
 
 
-    replaceHsv(channels: any): Color {
+    replaceHsv(channels: HSVA): Color {
         const [hue, saturation, value] = this.toHsv();
         const hsv: HSVA = {
             hue: hue,
@@ -112,7 +111,7 @@ export class RGBAColor extends BaseColor {
         Object.entries(channels)
             .filter(([k, v]) => v !== undefined)
             .forEach(([k, v]) => hsv[k] = (v as number))
-        const [red, green, blue] = hsvToRgb(hsv.hue, hsv.saturation, hsv.value);
+        const [red, green, blue] = hsvToRgb(hsv.hue, hsv.saturation, hsv.value).map((it) => normalize(it));
         return RGBAColor.fromArray([red, green, blue, this.alpha]);
     }
 

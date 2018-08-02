@@ -1,4 +1,4 @@
-import { Color, BaseColor, rgbToHsv, hsvToRgb, RGBA, HSVA } from './color';
+import { Color, BaseColor, rgbToHsv, hsvToRgb, RGBA, HSVA, normalize } from './color';
 
 export class HSVColor extends BaseColor {
     constructor(
@@ -39,7 +39,7 @@ export class HSVColor extends BaseColor {
         Object.entries(channels)
             .filter(([k, v]) => v !== undefined)
             .forEach(([k, v]) => rgba[k] += v)
-        const [h, s, v] = rgbToHsv(rgba.red, rgba.green, rgba.blue);
+        const [h, s, v] = rgbToHsv(rgba.red, rgba.green, rgba.blue).map(it => normalize(it));
         return new HSVColor(h, s, v, rgba.alpha);
     }
 
@@ -54,7 +54,7 @@ export class HSVColor extends BaseColor {
         Object.entries(channels)
             .filter(([k, v]) => v !== undefined)
             .forEach(([k, v]) => rgba[k] = v)
-        const [h, s, v] = rgbToHsv(rgba.red, rgba.green, rgba.blue);
+        const [h, s, v] = rgbToHsv(rgba.red, rgba.green, rgba.blue).map(it => normalize(it));
         return new HSVColor(h, s, v, rgba.alpha);
     }
 
@@ -64,11 +64,11 @@ export class HSVColor extends BaseColor {
         return newColor;
     }
 
-    addHsv(channels: any): Color {
+    addHsv(channels: HSVA): Color {
         const newColor = this.clone();
         Object.entries(channels)
             .filter(([k, v]) => v !== undefined)
-            .forEach(([k, v]) => newColor[k] += v)
+            .forEach(([k, v]) => newColor[k] = normalize(newColor[k] + v))
         return newColor;
     }
 
@@ -79,7 +79,7 @@ export class HSVColor extends BaseColor {
     }
 
 
-    replaceHsv(channels: any): Color {
+    replaceHsv(channels: HSVA): Color {
         const newColor = this.clone();
         Object.entries(channels)
             .filter(([k, v]) => v !== undefined)
