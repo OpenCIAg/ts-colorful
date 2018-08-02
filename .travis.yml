@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - 7
+  - 6
+script: npm test
+after_success: npm run coverage
+before_install: npm install -g codeclimate-test-reporter
+install:
+  - npm install
+cache:
+  directories:
+    - node_modules

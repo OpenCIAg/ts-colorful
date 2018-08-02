@@ -3,6 +3,7 @@
 !.nycr
 !.gitignore
 !.npmignore
+!.travis.yml
 /coverage
 /node_modules
 /dist
