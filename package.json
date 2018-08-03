@@ -17,10 +17,10 @@
     "prebuild": "rm -rf dist",
     "build": "tsc",
     "postbuild": "cp package.json dist/",
-    "test": "nyc --reporter=html --reporter=text mocha --file test/setup.ts test/**/*.spec.ts",
+    "test": "nyc --reporter=html --reporter=text mocha test/**/*.spec.ts",
     "predeploy": "npm run build",
     "deploy": "cd dist/ && npm publish",
-    "coverage": "nyc report --reporter=text-lcov | CODECLIMATE_REPO_TOKEN=17790027a2a9e3058c365a3ec660f081f5b9f6bc55986c1aee81d9cd69d0bf0c codeclimate-test-reporter "
+    "coverage": "nyc report --reporter=text-lcov | git codeclimate-test-reporter"
   },
   "author": "Etto",
   "license": "MIT",
