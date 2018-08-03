@@ -20,7 +20,7 @@
     "test": "nyc --reporter=html --reporter=text mocha test/**/*.spec.ts",
     "predeploy": "npm run build",
     "deploy": "cd dist/ && npm publish",
-    "coverage": "nyc report --reporter=text-lcov | git codeclimate-test-reporter"
+    "coverage": "nyc report --reporter=text-lcov | codeclimate-test-reporter "
   },
   "author": "Etto",
   "license": "MIT",
