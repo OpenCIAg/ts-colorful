@@ -7,7 +7,7 @@
 
 ## Install
 ```shell
-npm install ciag-colorful
+npm install @ciag/colorful
 ```
 
 ## Usage example with Angular
@@ -15,9 +15,9 @@ npm install ciag-colorful
 ### Add the service
 ```ts
 import { NgModule } from '@angular/core';
-import { ColorService } from 'ciag-colorful';
-import { PalleteBasedColorGenerator } from 'ciag-colorful/generator';
-import { PalleteFactory, NEBULAR_CORPORATE } from 'ciag-colorful/pallete';
+import { ColorService } from '@ciag/colorful';
+import { PalleteBasedColorGenerator } from '@ciag/colorful/generator';
+import { PalleteFactory, NEBULAR_CORPORATE } from '@ciag/colorful/pallete';
 
 const palleteFactory = new PalleteFactory();
 const pallete = palleteFactory.makeFromArray(NEBULAR_CORPORATE);
@@ -34,7 +34,7 @@ export class AppModule{}
 ### Use the service
 ```ts
 import { Component } from '@angular/core';
-import { ColorService } from 'ciag-colorful';
+import { ColorService } from '@ciag/colorful';
 
 @Component({
     selector: 'colorful-component',
