@@ -23,8 +23,12 @@
     "deploy": "cd dist/ && npm publish --access public",
     "coverage": "nyc report --reporter=text-lcov | codeclimate-test-reporter "
   },
-  "author": "Etto",
-  "license": "MIT",
+  "author": {
+    "name": "Ettore Leandro Tognoli",
+    "email": "ettore.leandro.tognoli@gmail.com",
+    "url": "https://ettoreleandrotognoli.github.io"
+  },
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
